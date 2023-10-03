@@ -13,34 +13,187 @@ namespace SecondApiExam.Controllers
         {
             new Weather()
             {
+                idCity= 1,
                 Date = new DateOnly(2023, 09, 20),
                 Temperature = 30,
                 Description="Солнечно"
             },
             new Weather()
             {
-                Date = new DateOnly(2023, 10, 02),
+                idCity= 1,
+                Date = new DateOnly(2023, 09, 21),
                 Temperature = 23,
                 Description="Небольшой дождь"
             },
             new Weather()
             {
-                Date = new DateOnly(2023, 11, 15),
+                idCity= 1,
+                Date = new DateOnly(2023, 09, 22),
                 Temperature = 15,
                 Description="Снег"
             },
             new Weather()
             {
-                Date = new DateOnly(2023, 08, 5),
+                idCity= 1,
+                Date = new DateOnly(2023, 09, 23),
                 Temperature=26,
                 Description="Солнечно"
             },
             new Weather()
             {
-                Date = new DateOnly(2023, 09, 27),
+                idCity= 1,
+                Date = new DateOnly(2023, 09, 24),
                 Temperature=18,
                 Description="Пасмурно"
-            }
+            },
+
+
+            new Weather()
+            {
+                idCity= 2,
+                Date = new DateOnly(2023, 09, 20),
+                Temperature = 30,
+                Description="Снег"
+            },
+            new Weather()
+            {
+                idCity= 2,
+                Date = new DateOnly(2023, 09, 21),
+                Temperature = 23,
+                Description="Небольшой дождь"
+            },
+            new Weather()
+            {
+                idCity= 2,
+                Date = new DateOnly(2023, 09, 22),
+                Temperature = 15,
+                Description="Пасмурно"
+            },
+            new Weather()
+            {
+                idCity= 2,
+                Date = new DateOnly(2023, 09, 23),
+                Temperature=26,
+                Description="Солнечно"
+            },
+            new Weather()
+            {
+                idCity= 2,
+                Date = new DateOnly(2023, 09, 24),
+                Temperature=18,
+                Description="Снег"
+            },
+
+
+            new Weather()
+            {
+                idCity= 3,
+                Date = new DateOnly(2023, 09, 20),
+                Temperature = 30,
+                Description="Снег"
+            },
+            new Weather()
+            {
+                idCity= 3,
+                Date = new DateOnly(2023, 09, 21),
+                Temperature = 23,
+                Description="Небольшой дождь"
+            },
+            new Weather()
+            {
+                idCity= 3,
+                Date = new DateOnly(2023, 09, 22),
+                Temperature = 15,
+                Description="Пасмурно"
+            },
+            new Weather()
+            {
+                idCity= 3,
+                Date = new DateOnly(2023, 09, 23),
+                Temperature=26,
+                Description="Солнечно"
+            },
+            new Weather()
+            {
+                idCity= 3,
+                Date = new DateOnly(2023, 09, 24),
+                Temperature=18,
+                Description="Снег"
+            },
+
+
+            new Weather()
+            {
+                idCity= 4,
+                Date = new DateOnly(2023, 09, 20),
+                Temperature = 30,
+                Description="Снег"
+            },
+            new Weather()
+            {
+                idCity= 4,
+                Date = new DateOnly(2023, 09, 21),
+                Temperature = 23,
+                Description="Небольшой дождь"
+            },
+            new Weather()
+            {
+                idCity= 4,
+                Date = new DateOnly(2023, 09, 22),
+                Temperature = 15,
+                Description="Пасмурно"
+            },
+            new Weather()
+            {
+                idCity= 4,
+                Date = new DateOnly(2023, 09, 23),
+                Temperature=26,
+                Description="Солнечно"
+            },
+            new Weather()
+            {
+                idCity= 4,
+                Date = new DateOnly(2023, 09, 24),
+                Temperature=18,
+                Description="Снег"
+            },
+
+
+            new Weather()
+            {
+                idCity= 5,
+                Date = new DateOnly(2023, 09, 20),
+                Temperature = 30,
+                Description="Снег"
+            },
+            new Weather()
+            {
+                idCity= 5,
+                Date = new DateOnly(2023, 09, 21),
+                Temperature = 23,
+                Description="Небольшой дождь"
+            },
+            new Weather()
+            {
+                idCity= 5,
+                Date = new DateOnly(2023, 09, 22),
+                Temperature = 15,
+                Description="Пасмурно"
+            },
+            new Weather()
+            {
+                idCity= 5,
+                Date = new DateOnly(2023, 09, 23),
+                Temperature=26,
+                Description="Солнечно"
+            },
+            new Weather()
+            {
+                idCity= 5,
+                Date = new DateOnly(2023, 09, 24),
+                Temperature=18,
+                Description="Снег"
+            },
         };
         List<City> cities = new List<City>()
         {
@@ -93,7 +246,7 @@ namespace SecondApiExam.Controllers
         }
 
         [HttpGet("GetWeatherByCity")]
-        public IActionResult GetWeathers(string token)
+        public IActionResult GetWeathers(string token, int id)
         {
             if (string.IsNullOrWhiteSpace(token))
             {
@@ -104,7 +257,7 @@ namespace SecondApiExam.Controllers
             {
                 return Unauthorized("Неверный токен");
             }
-            else return Ok(weathers);
+            else return Ok(weathers.Where(x => x.idCity == id));
         }
     }
 }

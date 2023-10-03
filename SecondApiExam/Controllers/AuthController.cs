@@ -61,7 +61,15 @@ namespace SecondApiExam.Controllers
                     };
                     _tokenRepository.DeleteAll();
                     _tokenRepository.Add(tokendb);
-                    return Ok(token);
+
+                    UserTokenDate userTokenDate = new UserTokenDate()
+                    {
+                        Account = expectedUser,
+                        token = token,
+                        Date = new DateOnly(2023, 10, 2)
+                    };
+
+                    return Ok(userTokenDate);
                 }
             }
             catch (Exception)
